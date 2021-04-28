@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">犯罪意向</string>
+    <string name="crime_title_hint">输入一个犯罪的标题。</string>
+</resources>
