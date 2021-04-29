@@ -6,15 +6,21 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 public class CrimeFragment extends Fragment {
 
     private Crime mCrime;
     private EditText mTitleField;
+    private Button mDateButton;
+    private CheckBox mSolvedCheckBox;
 
 
     @Override
@@ -57,6 +63,18 @@ public class CrimeFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 // 也是先置空
+            }
+        });
+        mDateButton = view.findViewById(R.id.crime_date);
+//        mDateButton.setText(DateFormat.getLongDateFormat(getContext()).format(mCrime.getDate()) + DateFormat.getTimeFormat(getContext()).format(mCrime.getDate()));
+        mDateButton.setText(mCrime.getDate().toString());
+        mDateButton.setEnabled(false);
+
+        mSolvedCheckBox = view.findViewById(R.id.crime_solved);
+        mSolvedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mCrime.setSolved(isChecked);
             }
         });
         return view;
