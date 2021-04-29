@@ -31,7 +31,8 @@ public class CrimeLab {
     }
     public Crime getCrime(UUID id){
         for (Crime crime:mCrimes) {
-            if(crime.getId() == id){
+            // 不能使用==比较对象是否相等，这相当于是在比较内存地址！！！2021年4月29日22:42:01
+            if(crime.getId().equals(id)){
                 return crime;
             }
         }
