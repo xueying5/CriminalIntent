@@ -1,13 +1,8 @@
 package com.bignerdranch.android.criminalintent;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +11,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.UUID;
 
 public class CrimeFragment extends Fragment {
 
     private static final String ARG_CRIME_ID = "crime_id";
+    public static final String INDEX_UPDATE = "index_update";
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
@@ -49,6 +47,9 @@ public class CrimeFragment extends Fragment {
 //        System.out.println();
     }
 
+    /*public void returnResult(Intent intent){
+        getActivity().setResult(Activity.RESULT_OK, intent);
+    }*/
     /**
      *
      * @param inflater 用于生成视图view
@@ -65,10 +66,6 @@ public class CrimeFragment extends Fragment {
                 false                          // 告诉视图生成器是否将生成的视图添加到父视图
         );
         mTitleField = view.findViewById(R.id.crime_title);
-        String s = mCrime.getTitle();
-        if(s == null){
-            Log.e("ERROR", "getTitle（） 为空");
-        }
         mTitleField.setText(mCrime.getTitle());
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
