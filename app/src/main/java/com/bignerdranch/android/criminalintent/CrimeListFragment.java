@@ -105,9 +105,12 @@ public class CrimeListFragment extends Fragment {
 //            Toast.makeText(getActivity(), mCrime.getTitle() + " clicked！", Toast.LENGTH_LONG).show();
 //            Intent intent = new Intent(getActivity(), CrimeActivity.class);
             // 哪一项被点击了，记住索引，在updateUI()中更新那一项就可以了
-            mUpdateItemIndex = getAdapterPosition();
-            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+//            mUpdateItemIndex = getAdapterPosition();
 //            startActivityForResult(intent, REQUEST_CRIME);
+
+            //-------------------------------------------------------------
+//            Intent intent = CrimeActivity.newIntent(getActivity(), mCrime.getId());
+            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
             startActivity(intent);
         }
     }
